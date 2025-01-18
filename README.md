@@ -5,22 +5,43 @@
 
 ## 🔍 プロジェクト概要
 
-本プロジェクトは、**SIGNATE SMBC Group GREEN×DATA Challenge 2024**への参加作品です。  
-温室効果ガス（GHG）排出量を2014年データに基づいて予測し、環境と施設データを活用して持続可能性の向上に貢献することを目的としました。
+- **説明変数**：アメリカの大気観測施設の位置情報データ、有害物質（TRI）排出量データ、GHG排出量データ
+- **目的変数**：特定の施設における2014年のGHG排出量（GHG_Direct_Emissions_14_in_metric_tons）
 
-### 🌟 成果
-- **上位15％**にランクイン  
-- ベースラインのRMSLEを**0.76**から**0.722**に改善  
-- 環境持続可能性に関する特徴量設計を実現  
+<img width="823" alt="cFm3VhywvxEFYebhzFUU4baC4IpYqsUU0r5i64Cb" src="https://github.com/user-attachments/assets/14aec067-7dc6-4b62-9496-6e65e50d7d2c" />
 
 ---
 
-## 📊 主なポイント
+## 📊 データの概要
 
-- **課題**：TRIとGHGデータを基にしたGHG排出量予測  
-- **目標**：環境意思決定のための実用的なインサイト提供  
-- **結果**：特徴量エンジニアリングとLightGBMモデリングにより精度を向上  
+### 訓練データ（サイズ：4655）
 
+|   No. | Column                                 | Column (Japanese)   |   Null Count | Dtype   |
+|------:|:---------------------------------------|:--------------------|-------------:|:--------|
+|     1 | FacilityName                           | 施設名              |            0 | object  |
+|     2 | Latitude                               | 緯度                |          102 | float64 |
+|     3 | Longitude                              | 経度                |          102 | float64 |
+|     4 | LocationAddress                        | 住所                |          179 | object  |
+|     5 | City                                   | 市                  |            0 | object  |
+|     6 | State                                  | 州                  |            0 | object  |
+|     7 | ZIP                                    | 郵便番号             |            0 | object  |
+|     8 | County                                 | 郡                  |           70 | object  |
+|     9 | FIPScode                               | FIPSコード          |           73 | float64 |
+|    10 | PrimaryNAICS                           | 主要NAICSコード     |            0 | int64   |
+|    11 | Second PrimaryNAICS                    | 第2NAICSコード      |         4276 | float64 |
+|    12 | IndustryType                           | 産業タイプ          |            1 | object  |
+|    13 | TRI_Air_Emissions_10_in_lbs            | TRI大気排出量2010   |         3020 | float64 |
+|    14 | TRI_Air_Emissions_11_in_lbs            | TRI大気排出量2011   |         3020 | float64 |
+|    15 | TRI_Air_Emissions_12_in_lbs            | TRI大気排出量2012   |         3020 | float64 |
+|    16 | TRI_Air_Emissions_13_in_lbs            | TRI大気排出量2013   |         3020 | float64 |
+|    17 | GHG_Direct_Emissions_10_in_metric_tons | GHG直接排出量2010   |          702 | float64 |
+|    18 | GHG_Direct_Emissions_11_in_metric_tons | GHG直接排出量2011   |          371 | float64 |
+|    19 | GHG_Direct_Emissions_12_in_metric_tons | GHG直接排出量2012   |          260 | float64 |
+|    20 | GHG_Direct_Emissions_13_in_metric_tons | GHG直接排出量2013   |          148 | float64 |
+|    21 | GHG_Direct_Emissions_14_in_metric_tons | GHG直接排出量2014   |            0 | float64 |
+
+
+### 予測データ（サイズ：2508）
 ---
 
 ## 🛠️ 使用した技術
@@ -84,3 +105,10 @@ RMSLEスコア：0.722
 RMSLE	0.722
 ベースライン	0.76
 改善率	5%
+
+---
+
+### 🌟 成果
+- **上位15％**にランクイン  
+- ベースラインのRMSLEを**0.76**から**0.722**に改善  
+- 環境持続可能性に関する特徴量設計を実現 
